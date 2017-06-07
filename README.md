@@ -1,6 +1,1 @@
-echo "# xlp2017" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git remote add origin https://github.com/willista/xlp2017.git
-git push -u origin master
+这里是xlp 2017夏－计算思维与系统设计
