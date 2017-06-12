@@ -26,7 +26,7 @@ to setup
   clear-all
   reset-ticks
   set isBlack? true
-  set num_lines 19 ;; Set the chess board to have num_lines * num_lines lines
+  set num_lines 18 ;; Set the chess board to have num_lines * num_lines lines
   resize-world 0 num_lines 0 num_lines
   set currentNumberOfLinkedPieces 0
 
@@ -44,20 +44,40 @@ to drawXYGrid
                create-linelinks-with other turtles with [distance myself = 1]]
   ask links [set color black
              set thickness 0.01]
+  crt 1 [set color black set shape "circle" set size 0.3 setxy 3 3]
+  crt 1 [set color black set shape "circle" set size 0.3 setxy 3 9]
+  crt 1 [set color black set shape "circle" set size 0.3 setxy 3 15]
+  crt 1 [set color black set shape "circle" set size 0.3 setxy 9 3]
+  crt 1 [set color black set shape "circle" set size 0.3 setxy 9 9]
+  crt 1 [set color black set shape "circle" set size 0.3 setxy 9 15]
+  crt 1 [set color black set shape "circle" set size 0.3 setxy 15 3]
+  crt 1 [set color black set shape "circle" set size 0.3 setxy 15 9]
+  crt 1 [set color black set shape "circle" set size 0.3 setxy 15 15]
 
 end
 
+
 to start
+  let mX (round mouse-xcor)
+  let mY (round mouse-ycor)
   if mouse-down?
- [
-      let mX (round mouse-xcor)
-      let mY (round mouse-ycor)
-     crt 1 [set shape "circle"
+    [ifelse isBlack?
+
+     [crt 1 [set shape "circle"
         set size 0.7
         set color black
         setxy mX mY]
         display
-            ]
+        set isBlack? false]
+     [crt 1 [set shape "circle"
+        set size 0.7
+        set color white
+        setxy mX mY]
+        display
+        set isBlack? true]]
+
+
+
   ;ifelse mouse-clicked?
    ;   [crt 1
     ;    display]
@@ -65,14 +85,12 @@ to start
 
 end
 
-
-
 @#$#@#$#@
 GRAPHICS-WINDOW
 210
 10
-618
-419
+598
+399
 -1
 -1
 20.0
@@ -86,9 +104,9 @@ GRAPHICS-WINDOW
 0
 1
 0
-19
+18
 0
-19
+18
 1
 1
 1
